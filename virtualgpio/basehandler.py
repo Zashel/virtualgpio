@@ -1,4 +1,5 @@
-from ..basehandler import *
+from . import VirtualGPIO
+from zashel.basehandler import *
 
 class VirtualGPIOBaseHandler(BaseHandler):
     def __init__(self):
@@ -6,27 +7,23 @@ class VirtualGPIOBaseHandler(BaseHandler):
         You must subclass it to handle the GPIO and other Stuff
         '''
         super().__init__()
-        self._virtualGPIO = None
 
-    #~~~~~~~~~PROPERTIES~~~~~~~~~#
+    #~~~~~~~~~PROPERTIES~~~~~~~~~#  
     @property
-    def virtualGPIO(self):
-        return self._virtualGPIO
-    
-    @property
-    def is_connected(self):
+    def is_virtualgpio_connected(self):
         return isinstance(self._virtualGPIO, VirtualGPIO)
 
     #~~~~~~~~~FUNCTIONS~~~~~~~~~~#
-    def connect_virtual_GPIO(self, gpio):
+    def connect_virtualgpio(self, gpio):
         if isinstance(gpio, VirtualGPIO):
-            self._virtualGPIO = gpio
+            self.connect_stuff(virtualGPIO=gpio)
         else:
-            raise VirtualGPIOError
+            raise VirtualGPIOError()
 
     #Handling functions:
     #All signals must begin with "signal_"
     def signal_connect(self, uuid, timeout):
+        if is_virtualgpio_connected
         timeout = datetime.datetime.strptime(timeout, "%Y%m%d%H%M%S")
         self.virtualGPIO.connections[uuid] = timeout #TODO: debug this. This is going to f*ck up all.
 

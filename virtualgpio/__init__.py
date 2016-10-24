@@ -63,7 +63,7 @@ class VirtualGPIO(object):
         self._output = os.path.join(self.path, OUTPUT)
         self.connections = dict()
         self._handler = handler
-        self._handler.connect_virtual_GPIO(self)
+        self._handler.connect_virtualgpio(self)
         self._connected = False
 
     def __del__(self): #I thought this to be fun
