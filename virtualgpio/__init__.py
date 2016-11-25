@@ -2,7 +2,8 @@
 __all__ = [
         "VirtualGPIO",
         "VirtualGPIOBaseHandler",
-        "MetaSignal"
+        "ConnectSignal",
+        "DisconnectSignal"
         ]
         
 # All Exceptions
