@@ -17,7 +17,7 @@ from .exceptions import *
 from .signals import *
 from .basehandler import *
 from .signals import *
-from ..utils import daemonize
+from zashel.utils import daemonize
 from uuid import uuid1
 import datetime
 import os
