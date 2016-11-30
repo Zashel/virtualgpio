@@ -220,3 +220,7 @@ class VirtualGPIO(object):
         
     def send(self, destination, signal): #signal from MetaSignal
         self._raw_send(destination, signal.bytearray)
+
+    def send_all(self, signal):
+        for destination in self.clients:
+            self.send(destination,signal)
