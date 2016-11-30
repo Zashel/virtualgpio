@@ -219,5 +219,4 @@ class VirtualGPIO(object):
         self.listen()
         
     def send(self, destination, signal): #signal from MetaSignal
-        assert isinstance(signal, Signal)
         self._raw_send(destination, signal.bytearray)
