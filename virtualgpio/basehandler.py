@@ -1,4 +1,3 @@
-from . import VirtualGPIO
 from .exceptions import *
 from zashel.basehandler import *
 import datetime
@@ -13,7 +12,7 @@ class VirtualGPIOBaseHandler(BaseHandler):
     #~~~~~~~~~PROPERTIES~~~~~~~~~#  
     @property
     def is_virtualgpio_connected(self):
-        return isinstance(self._virtualGPIO, VirtualGPIO)
+        return "virtualGPIO" in dir(self)
 
     #~~~~~~~~~FUNCTIONS~~~~~~~~~~#
     def connect_virtualgpio(self, gpio):
