@@ -52,6 +52,7 @@ class VirtualGPIO(object):
         
         path: path for the required files to be created/modified
         '''
+        self._connected = False
         if not os.path.exists(path):
             raise PathError(
                     "Path {} does not exist".format(
@@ -65,7 +66,6 @@ class VirtualGPIO(object):
         self.connections = dict()
         self._handler = handler
         self._handler.connect_virtualgpio(self)
-        self._connected = False
 
     def __del__(self): #I thought this to be fun
         self.disconnect()

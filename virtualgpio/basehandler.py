@@ -16,10 +16,7 @@ class VirtualGPIOBaseHandler(BaseHandler):
 
     #~~~~~~~~~FUNCTIONS~~~~~~~~~~#
     def connect_virtualgpio(self, gpio):
-        if isinstance(gpio, VirtualGPIO):
-            self.connect_stuff(virtualGPIO=gpio)
-        else:
-            raise VirtualGPIOError()
+        self.connect_stuff(virtualGPIO=gpio)
 
     #Handling functions:
     #All signals must begin with "signal_"
