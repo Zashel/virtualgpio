@@ -110,7 +110,6 @@ class VirtualGPIO(object):
     #~~~~~~~~~VirtualGPIO~~~~~~~~#
     #~~~~~~~~~~FUNCTIONS~~~~~~~~~#
     def _raw_send(self, destination, message): #Send it anyway
-        print(destination)
         if destination != self.uuid:
             now = self.timeout()    #Twice
             if isinstance(message, str):
