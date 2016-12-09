@@ -110,25 +110,27 @@ class VirtualGPIO(object):
     #~~~~~~~~~VirtualGPIO~~~~~~~~#
     #~~~~~~~~~~FUNCTIONS~~~~~~~~~#
     def _raw_send(self, destination, message): #Send it anyway
-        now = self.timeout()    #Twice
-        if isinstance(message, str):
-            message = bytearray(message, "utf-8")
-        if isinstance(message, bytearray):
-            file_name = "{}@{}".format(now, destination)
-            file_path = os.path.join(self.output, file_name)
-            with open(file_path, "wb") as message_file:
-                message_file.write(message)
-            destination_path = os.path.join(
-                    self._path, 
-                    destination,
-                    INPUT,
-                    file_name) #Now we move the data.
-            try:
-                os.rename(file_path, destination_path)
-            except:
-                raise Exception #Look for an Exception
-        else:
-            return TypeError("message must be a bytearray or a str")
+        print(destination)
+        if destination != self.uuid:
+            now = self.timeout()    #Twice
+            if isinstance(message, str):
+                message = bytearray(message, "utf-8")
+            if isinstance(message, bytearray):
+                file_name = "{}-{}".format(now, destination)
+                file_path = os.path.join(self.output, file_name)
+                with open(file_path, "wb") as message_file:
+                    message_file.write(message)
+                destination_path = os.path.join(
+                        self._path,
+                        destination,
+                        INPUT,
+                        file_name) #Now we move the data.
+                try:
+                    os.rename(file_path, destination_path)
+                except:
+                    raise Exception #Look for an Exception
+            else:
+                return TypeError("message must be a bytearray or a str")
             
             
     def connect(self):      #Make file and GPIO Visible
@@ -222,5 +224,5 @@ class VirtualGPIO(object):
         self._raw_send(destination, signal.bytearray)
 
     def send_all(self, signal):
-        for destination in self.clients:
+        for destination in self.connections:
             self.send(destination,signal)
