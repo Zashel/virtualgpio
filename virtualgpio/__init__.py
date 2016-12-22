@@ -195,6 +195,7 @@ class VirtualGPIO(object):
     @daemonize
     def listen(self): #Let's listen on Input
         lsdir = list()
+        print("VGPIO listening on {}".format(self.input))
         while True: #This will listen almost all the messages
             if len(lsdir)>0:
                 lsdir.sort()
