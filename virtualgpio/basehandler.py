@@ -21,7 +21,7 @@ class VirtualGPIOBaseHandler(BaseHandler):
     #Handling functions:
     #All signals must begin with "signal_"
     def signal_connect(self, uuid, timeout):
-        if self.is_virtualgpio_connected():
+        if self.is_virtualgpio_connected:
             timeout = datetime.datetime.strptime(timeout, "%Y%m%d%H%M%S")
             self.virtualGPIO.connections[uuid] = timeout #TODO: debug this. This is going to f*ck up all.
 
