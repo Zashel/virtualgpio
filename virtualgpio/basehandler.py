@@ -12,7 +12,7 @@ class VirtualGPIOBaseHandler(BaseHandler):
     #~~~~~~~~~PROPERTIES~~~~~~~~~#  
     @property
     def is_virtualgpio_connected(self):
-        return "virtualGPIO" in dir(self)
+        return "virtualGPIO" in dir(self._connected_stuff)
 
     #~~~~~~~~~FUNCTIONS~~~~~~~~~~#
     def connect_virtualgpio(self, gpio):
